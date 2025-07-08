@@ -1,0 +1,38 @@
+.taskBoardBody{
+    /* background-color: black; */
+    display: flex;
+    width: 100%;
+}
+
+.head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 2px solid black;
+    height: 40px;
+}
+
+.todo{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    /* background-color: aqua; */
+    border: 2px solid black;
+}
+
+.inProgress{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    /* background-color: beige; */
+    border: 2px solid black;
+}
+
+.completed{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    /* background-color: blanchedalmond; */
+    border: 2px solid black;
+}
