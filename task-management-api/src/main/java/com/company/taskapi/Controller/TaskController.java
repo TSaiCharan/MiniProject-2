@@ -2,24 +2,34 @@ package com.company.taskapi.Controller;
 
 import com.company.taskapi.dto.TaskRequestDTO;
 import com.company.taskapi.entity.Task;
+import com.company.taskapi.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class TaskController {
 
+    @Autowired
+    TaskService taskService;
+
     @GetMapping("tasks")
-    public String getAllTasks(){
-        return "All tasks";
+    public List<Task> getAllTasks(){
+        return taskService.findAll();
     }
 
     @GetMapping("tasks/{id}")
-    public String getAllTasksById( @PathVariable int id){
-        return "All tasks by " + id;
+    public Optional<Task> getAllTasksById(@PathVariable long id){
+        return taskService.findById(id);
     }
 
     @PostMapping("tasks")
     public String addNewTask( @RequestBody Task task){
+        taskService.save(task);
         return "Added new task";
     }
 
@@ -34,7 +44,8 @@ public class TaskController {
     }
 
     @DeleteMapping("tasks/{id}")
-    public String deleteTaskById( @PathVariable int id){
+    public String deleteTaskById( @PathVariable long id){
+        taskService.deleteById(id);
         return "Deleted task with id: " + id;
     }
 
