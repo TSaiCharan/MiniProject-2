@@ -3,18 +3,27 @@ import apiService from "../services/apiService";
 
 const TaskContext = createContext();
 
-const TaskProvider = ({children}) =>{
+const TaskProvider = ({children} = {}) =>{
     const [tasks, setTasks] = useState([]);
 
-    useEffect(()=>{
-        const fetch = async () =>{
+    useEffect(() => {
+        const fetch = async () => {
             const data = await apiService.getAllTasks();
+
+            // const updatedData = data.map(task => {
+            //     if (task.tags) {
+            //         return {
+            //             ...task,
+            //             tags: task.tags.split(",").map(tag => tag.trim())
+            //         };
+            //     }
+            //     return task;
+            // });
+
             setTasks(data);
-            console.log(data);
-            console.log(tasks);
-        };
-        fetch();
-    },[]);
+        };fetch();
+    }, []);
+
 
     useEffect(() => {
         console.log("Tasks updated to:", tasks);
@@ -22,7 +31,7 @@ const TaskProvider = ({children}) =>{
 
 
     return(
-        <TaskContext.Provider value={tasks}>
+        <TaskContext.Provider value={{tasks, setTasks}}>
             {children}
         </TaskContext.Provider>
     )

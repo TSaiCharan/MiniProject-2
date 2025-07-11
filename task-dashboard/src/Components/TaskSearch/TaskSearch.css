@@ -1,0 +1,40 @@
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.searchbartext {
+  padding: 10px 16px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #ccc;
+  width: 250px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.searchbartext:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.searchbarbutton {
+  padding: 10px 20px;
+  border-radius: 0 8px 8px 0;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.searchbarbutton:hover {
+  background-color: #0056b3;
+}
+
+.searchbarbutton:active {
+  background-color: #004085;
+}
